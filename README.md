@@ -1,10 +1,15 @@
 # Automated_MorphoGraphX_PaCeQuant
 
 # Purpose
-<p>This python script automates the cell segmentaion of plant pavement cells using a workflow described in https://doi.org/10.1186/s12915-019-0657-1.</p> 
+<p>This python script automates the cell segmentaion of (fresh) plant pavement cells using a workflow described in https://doi.org/10.1186/s12915-019-0657-1 (Erguvan et el. 2019).</p> 
 <p>Specifically, the worklfow automates MorphoGraphX, used to extract only the signal in a certain distance to the cell surface and creates tif files, and PaCeQuant which is a tool for pavement cell segmentation
 The script generates many such tif files based on the user's input parameters as descibed below. Among these you can then choose the best segmentation. If the best segmentation is not perfect you can then use MiToBo's tool for manual correction.</p> 
 <p>If you wish to auotmate MorphoGraphX with a similar, or even different purpose, I hope this script can still be of use to realize your own script.</p>
+
+# Introduction
+<p>Pavement cells of the plant leaf epidermis are shaped in a complex manner. Quantifying such
+complex cells is not trivial, especially not if you want to avoid manual segmentation.
+PaCeQuant (Möller et al. 2017), a watershed-based segmentation tool specifically designed for pavement cells, can be used to segment these cells. However, as the cells, as well as the tissue itself, is curved, a single image or a simple MAX-z-projection do not produce good enough results. With MorphoGraphX (Strauss et al. 2021), a software to analyze bend tissue and cells, only the signal with a certain distance to the surface can be extracted (aka annihilated).</p>
 
 # Requirements
 <p> <strong>MorphoGraphX 2.0.1</strong> (https://morphographx.org/software/). Tested specifically on the cuda version on Ubuntu 20.04 (mgx-2.0.1-382-ubuntu20.04-cuda). Other versions of 2.0.1 (e.g. without cuda) should also work, but other versions may have different names or parameter structures for the processes used.</p> 
@@ -31,6 +36,17 @@ PaCeQuant is finally applied on the whole directory (After_MorphoGraphX) contain
 
 
 # Sources
-<p>MorphoGraphX:</p>
-<p>PaCeQuant:</p>
-<p>Fiji:</p>
+<p><strong>Worfklow:</strong> Erguvan, Özer et al. (May 2019). “ImageJ SurfCut: a user-friendly pipeline for high-throughput
+extraction of cell contours from 3D image stacks”. In: BMC Biology 17.1. issn: 1741-7007.
+doi: 10.1186/s12915-019-0657-1. url: http://dx.doi.org/10.1186/s12915-019-0657-1</p>
+<p><strong>MorphoGraphX</strong>: Strauss, Soeren et al. (2021). “MorphoGraphX 2.0: Providing context for biological image analysis
+with positional information”. In: bioRxiv. doi: 10.1101/2021.08.12.456042. eprint: https:
+//www.biorxiv.org/content/early/2021/08/13/2021.08.12.456042.full.pdf. url: https:
+//www.biorxiv.org/content/early/2021/08/13/2021.08.12.456042.</p>
+<p><strong>PaCeQuant</strong>: Möller, Birgit et al. (Sept. 2017). “PaCeQuant: A Tool for High-Throughput Quantification of
+Pavement Cell Shape Characteristics”. In: Plant Physiology 175.3, pp. 998–1017. issn: 0032-
+0889. doi: 10.1104/pp.17.00961. eprint: https://academic.oup.com/plphys/article-pdf/175/
+3/998/37245904/plphys\_v175\_3\_998.pdf. url: https://doi.org/10.1104/pp.17.00961.</p>
+<p><strong>Fiji</strong>: Schindelin, Johannes et al. (June 2012). “Fiji: an open-source platform for biological-image anal-
+ysis”. In: Nature Methods 9.7, pp. 676–682. issn: 1548-7105. doi: 10.1038/nmeth.2019. url:
+http://dx.doi.org/10.1038/nmeth.2019</p>
