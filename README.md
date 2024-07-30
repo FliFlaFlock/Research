@@ -19,12 +19,14 @@ PaCeQuant (Möller et al. 2017), a watershed-based segmentation tool specificall
 
 
 # Worklfow 
+![](MD_Pictures/FlowChart-1.png)
 ### Upon Start-Up
 <p>When executing the script you will be prompted to select a folder containing your tif files of interest. Afterwards, you need to provide the Gaussian filter radius (in um) as well as the Edge Detect Threshold, used by MorphoGraphX, for each tif file. These values provide the basis of the surface created in MorphoGraphX.</p>
 <p>The next window asks you to change the general parameters. You probably won't change most of these, but you probably want to change the Annhiliation Ranges and Range of Tested Annihilations according to your files. More information on this below.</p>
 <p>A .py script is created containing all parameters set, and MorphoGraphX is started. As the last manual step, in MorphoGraphX select the python file that was just created in the prior chosen directory using Processes/Misc/Python</p>
 
 ### MorphoGraphX: Creates tif files of signal only in a certain distance to the surface
+![](MD_Pictures/MGX_Workflow.png)
 <p>For each tif file the stack is loaded (<strong>Processes/Stack/System/Open</strong>). If you have ticked the box to flip the stack for a specific tif file, the stack will be flipped (<strong>Process/Stack/Canvas/ReverseAxes</strong> with z: yes) Afterwards, the given Gaussian Filter is applied (<strong>Process/Stack/Filters/GaussianBlurStack</strong>) and edge detect is run with the chosen threshold (<strong>Process/Stack/Morphology/EdgeDetect</strong>). Using this, a mesh (aka surface) is created using <strong>Process/Mesh/Creation/MarchingCubesSurface</strong>, smoothed (<strong>Process/Mesh/Structure/SmoothMesh</strong>) and subdivided (<strong>Process/Mesh/Structure/Subdivide</strong>). The main stack (not Gaussed) is then loaded (<strong>Process/Stack/MultiStack/CopyMainToWork</strong>) and the signal with a certain distance to the surface is picked (aka annihilated) using <strong>Process/Stack/MeshInteraction/Annihilate</strong>. Finally, the working stack is copied to the main stack (<strong>Process/Stack/MultiStack/CopyWorkToMain</strong>) and the tif is saved (<strong>Process/Stack/System/Save</strong>).</p>
 <p>Note that for each tif input file this workflow is/can be applied with different annihilation parameters. Specifically, the thickness of signal used (dubbed Annihilation Ranges (um), e.g. 2 for a thickness of 2 um) and which range should be tested (dubbed Range of Tested Annihilations (um), e.g. Min: 8.0 and Max: 14.0 -> This would, given an Annihilation Range of 2 um, run the workflow for the following annihilations: 8-10 um, 10-12 um and 12-14 um). Note that you can choose multiple Annihilation Ranges (e.g. 2, 4) to get all tif files in the given Range of Tested Annihilations with thickness of 2 um AND 4 um. Again, if you wish to add another parameter to test for in this workflow, implementation should be rather simple. </p>
 
