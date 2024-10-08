@@ -42,6 +42,8 @@ PaCeQuant (Möller et al. 2017), a watershed-based segmentation tool specificall
 
 ![](MD_Pictures/Col-0_c6_c13_general_pars.png)
 
+### Prior Work
+<p>We provide a pdf (ProjectModule_PriorWork.pdf) describing work performed on imaging methods, stains, fixations, and more.</p>
 
 # Sources
 <p><strong>Worfklow:</strong> Erguvan, Özer et al. (May 2019). “ImageJ SurfCut: a user-friendly pipeline for high-throughput
