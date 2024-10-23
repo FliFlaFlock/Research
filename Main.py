@@ -1,3 +1,5 @@
+# parts of this work have been written with the help of ChatGTP (2024) 
+
 import subprocess
 import os
 import tkinter.filedialog
